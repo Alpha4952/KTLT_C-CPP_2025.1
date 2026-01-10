@@ -215,10 +215,6 @@ void menu(Library<T>* lib)
 {
     int choice = 0;
 
-    std::cout << "========================================================" << std::endl;
-    std::cout << "//////////        HATEL LIBRARY SYSTEM        //////////" << std::endl;
-    std::cout << "========================================================" << std::endl;
-
     do
     {
         display_menu();
