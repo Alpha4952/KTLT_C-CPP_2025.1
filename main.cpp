@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+// User-defined class
 class BorrowableBook : public Book {
     std::string borrower;
     std::string borrow_date;
@@ -114,13 +115,53 @@ public:
     }
 };
 
+// User-defined interface
+void choose_service(int service_choice); 
+
+void display_service_choice_menu()
+{
+    int service_choice;
+    // User-defined banner
+    std::cout << "========================================================" << std::endl;
+    std::cout << "//////////        HATEL LIBRARY SYSTEM        //////////" << std::endl;
+    std::cout << "========================================================" << std::endl;
+    std::cout << std::endl;
+
+    // User-defined menu
+    std::cout << "//////////         Available services         //////////" << std::endl;
+    std::cout << "1. Use within the library" << std::endl;
+    std::cout << "2. Borrow" << std::endl;
+    std::cout << "0. Exit" << std::endl;
+    std::cout << "Choose the service to use:"; std::cin >> service_choice;
+
+    choose_service(service_choice);
+}
+
+void choose_service(int service_choice)
+{
+    if (service_choice == 1)
+    {
+        Library<Book> lib;
+
+        lib.read_from_file("books.txt", Book::create_from_file);
+
+        menu(&lib);
+
+        lib.write_to_file("books.txt");
+    }
+    else if (service_choice == 2)
+    {
+        Library<BorrowableBook> lib;
+
+        lib.read_from_file("borrowable_books.txt", BorrowableBook::create_from_file);
+
+        menu(&lib);
+
+        lib.write_to_file("borrowable_books.txt");
+    }
+}
+
 int main()
 {
-    Library<BorrowableBook> lib;
-
-    lib.read_from_file("borrowable_books.txt", BorrowableBook::create_from_file);
-
-    menu(&lib);
-
-    lib.write_to_file("borrowable_books.txt");
+    display_service_choice_menu();
 }
