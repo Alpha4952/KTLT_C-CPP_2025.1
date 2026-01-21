@@ -1,2 +1,0 @@
-1|1|Dai so|Ha Phi|Thanh Hoa|True|None|0000-00-00|0000-00-00
-1|2|Dai so|Ha Phi|Thanh Hoa|True|||
